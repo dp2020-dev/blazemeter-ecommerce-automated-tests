@@ -1,0 +1,11 @@
+{
+    "username": "test",
+    "password": "test",
+    "welcomeText": "Welcome test",
+    "name": "Sid Spendalot",
+    "country": "UK",
+    "city": "Testville",
+    "creditCard": "554433221",
+    "month": "April",
+    "year": "2023"
+}
