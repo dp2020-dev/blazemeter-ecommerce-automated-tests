@@ -1,10 +1,22 @@
-# Cypress_BlazeShop_Automation_Testing
-Cypress test suite for the Blazemeter shop
+# Blazemeter (Demo) Shop Automated Functional Tests
 
-URL: https://github.com/dp2020-dev/Blazemeter_Shop_Automated_Tests
+This repository contains basic functional tests designed to help users become familiar with installing, configuring, and using common test automation tools. These tests verify the functionality of a mock e-commerce web shop at [https://www.demoblaze.com/](https://www.demoblaze.com/).
 
-This repo contains some basic Cypress e2e (UI) tests for the www.demoblaze.com test website. 
+## Test Categories
 
-It applies basic tests using Cypress commands such as `cy.visit()`, `cy.get()`, and `cy.contains()` to assert the homepage has loaded (Homepage.cy.js), and uses a base url in cypress.config.
+These tests cover the following categories:
 
-The E2EloginPurchases.spec covers customer log in, selecting items and adding to cart, fill in purchase details and completes purchase. This flow includes using the Fixtures file for user details, and custom commands to abstract clicking links and completing payment details.
+- **Page Loads**: Ensure that specified page load correctly.
+- **Navigation**: Verify the navigation within the web shop.
+- **Registered User Login**: Test the login process for registered users.
+- **Add to Basket and Checkout**: Check the functionality of adding items to the basket and completing the checkout process.
+
+## Test Frameworks
+
+This repository includes tests written in:
+
+- **Cypress**: Cypress-based test cases.
+- **Playwright (Work in Progress)**: Playwright-based test cases (still under development).
+
+If you encounter any issues or have suggestions for improvements, please open an issue or contribute to the repository.
+
