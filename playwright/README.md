@@ -1,6 +1,5 @@
 #Playwrighttest suite for the Blazemeter shop#
 
-
 This repo contains some basic Playwright (UI) tests for the www.demoblaze.com test website. 
 
 It applies basic tests using Playwright to assert the homepage has loaded, onjects displayed on age, navigation etc.
