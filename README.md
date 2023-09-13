@@ -1,6 +1,6 @@
 # Blazemeter (Demo) Shop Automated Functional Tests
 
-This repository contains basic functional tests designed to help users become familiar with installing, configuring, and using common test automation tools. These tests verify the functionality of a mock e-commerce web shop at [https://www.demoblaze.com/](https://www.demoblaze.com/).
+This repository contains basic functional tests to enable installing, configuring, and using common test automation tools. These tests verify the functionality of a mock e-commerce web shop at [https://www.demoblaze.com/](https://www.demoblaze.com/).
 
 ## Test Categories
 
