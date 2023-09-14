@@ -1,0 +1,38 @@
+4 week Cypress Study Plan (source: ChatGpt June 2023):
+
+Act as a coding tutor to create a study plan to help me learn Cypress to be able to create automated tests for front end e-commerce systems. I can study for up to 3 hours a week for 4 weeks, and prefer interactive, example based FREE resources . Provide relevant links to the study plan actions.
+ 
+From < https://chat.openai.com/c/3a02a88e-dcf5-4929-8619-f3c840529dea> 
+ 
+ 
+Certainly! Here's a study plan to help you learn Cypress and create automated tests for front-end e-commerce systems. This plan is designed for studying 3 hours per week for 4 weeks:
+ 
+Week 1:
+- Familiarize yourself with Cypress by reading the documentation and watching some introductory videos. Start with the Cypress official website:  https://docs.cypress.io/guides/overview/why-cypress.html
+- Install Cypress locally and set up a sample project. Follow the instructions on this page:  https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements
+- Complete the Cypress Getting Started tutorial:  https://docs.cypress.io/examples/examples/tutorials#Cypress-Getting-Started-Tutorial
+- Practice writing simple tests using Cypress commands such as `cy.visit()`, `cy.get()`, and `cy.contains()`. You can find some examples in the Cypress documentation:  https://docs.cypress.io/api/introduction/api.html#Commands
+ 
+Week 2:
+- Learn about the Cypress Test Runner and how to use it to run and debug tests. The Cypress documentation provides an overview of the Test Runner here:  https://docs.cypress.io/guides/core-concepts/test-runner.html
+- Practice using the Test Runner to run and debug your tests.
+- Explore how to run tests in headless mode by following this page:  https://docs.cypress.io/guides/guides/command-line#Running-headlessly-in-a-Docker-container
+ 
+Week 3:
+- Learn about fixtures and how to use them to organize test data. The Cypress documentation provides an overview of fixtures here:  https://docs.cypress.io/api/commands/fixture.html
+- Practice using fixtures to load test data into your tests.
+- Explore how to use environment variables to configure tests. This Cypress documentation page will be a great help:  https://docs.cypress.io/guides/guides/environment-variables
+ 
+Week 4:
+- Learn about custom commands and how to create them to simplify your test code. Cypress documentation provides a good explanation of Custom Commands here:  https://docs.cypress.io/api/cypress-api/custom-commands.html
+- Practice creating custom commands to abstract common test steps, like login or registering a user.
+- Finally, practice writing comprehensive test suites for a real-world e-commerce application using all of the knowledge and skills you have learned during the previous weeks.
+ 
+Additional resources:
+- Cypress Real World App:  https://github.com/cypress-io/cypress-realworld-app
+- Cypress Examples:  https://github.com/cypress-io/cypress-example-recipes
+- Cypress Testing Strategies:  https://testing-library.com/docs/cypress-testing-library/intro/
+- Cypress Dashboard Service (Integration with CI/CD):  https://dashboard.cypress.io/
+ 
+Remember to practice regularly and actively engage with the examples and exercises provided in the resources to reinforce your understanding of Cypress and automated testing for e-commerce systems. Good luck with your studies!
+ 
