@@ -1,4 +1,4 @@
-#Playwright test suite for the Blazemeter shop#
+# Playwright test suite for the Blazemeter shop
 
 This repo contains some basic Playwright (UI) tests for the www.demoblaze.com test website. 
 
