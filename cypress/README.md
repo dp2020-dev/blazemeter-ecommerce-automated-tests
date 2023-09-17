@@ -1,4 +1,4 @@
-#Blazemeter (demo) shop functional automated tests using Cypress#
+# Blazemeter (demo) shop functional automated tests using Cypress
 
 This repo contains some basic Cypress automated functional tests for the www.demoblaze.com mock e-commerce website. The tests are based on a Cypress study plan: https://github.com/dp2020-dev/blazemeter-ecommerce-automated-tests/blob/main/cypress/Cypress%204%20week%20study%20plan.txt
 
