@@ -1,4 +1,6 @@
 import { test, expect, Page } from "@playwright/test";
+import assert from "assert";
+
 test.beforeEach(async ({ page }) => {
   await page.goto("https://www.demoblaze.com/");
 });
@@ -16,10 +18,15 @@ test.describe("Log in tests", () => {
   });
 
   test("Verify Login Error Message", async ({ page }) => {
-    const userErrorText = "User does not exist."; //note- cannot verify this text, i.e. incorrect text still passes?
+    //this test does not work- does not verify alert message?
+    page.on("dialog", async (d) => {
+      expect(d.type()).toContain("alert");
+      expect(d.message()).toContain("Loser");
+      await d.accept();
+    });
 
     await page.getByRole("link", { name: "Log in" }).click();
-    //verify on Log In modal?
+    await expect(page.locator("#logInModalLabel")).toBeVisible();
     await page.locator("#loginusername").click();
     await page.locator("#loginusername").fill("notuser@demo.com");
     await page.locator("#loginusername").press("Tab");
@@ -32,14 +39,16 @@ test.describe("Log in tests", () => {
     await expect(locatorUsername).toHaveValue("notuser@demo.com");
 
     await page.getByRole("button", { name: "Log in" }).click();
+  });
 
-    page.on("dialog", async (alert) => {
-      const text = alert.message();
-      console.log(text);
-      await expect(text).toMatch(userErrorText);
-      await alert.accept(); //is this closing the alert?
-
-      page.getByRole("link", { name: "Log in" }); // does this verify back log in page
+  test("Verify Blank Login Error Message", async ({ page }) => {
+    page.on("dialog", async (d) => {
+      expect(d.type()).toContain("alert");
+      expect(d.message()).toContain("Please fill out Username and Password.");
+      await d.accept();
     });
+    await page.getByRole("link", { name: "Log in" }).click();
+    await expect(page.locator("#logInModalLabel")).toBeVisible();
+    await page.getByRole("button", { name: "Log in" }).click();
   });
 });
