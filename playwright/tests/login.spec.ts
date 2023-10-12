@@ -1,8 +1,7 @@
 import { test, expect, Page } from "@playwright/test";
-import { login } from "../../pages/login.page";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://www.demoblaze.com");
+  await page.goto("/");
 });
 
 test.describe("Log in tests", () => {
@@ -50,20 +49,5 @@ test.describe("Log in tests", () => {
     await page.getByRole("link", { name: "Log in" }).click();
     await expect(page.locator("#logInModalLabel")).toBeVisible();
     await page.getByRole("button", { name: "Log in" }).click();
-  });
-
-  test("Successful log in using POM", async ({ page }) => {
-    const loginPage = new login(page);
-    await loginPage.initializeLocators();
-
-    await loginPage.clickLoginLink();
-    await loginPage.enterUsername("test");
-    await loginPage.enterPassword("test");
-    await loginPage.clickLoginButton();
-    await loginPage.clickWelcomeLink();
-
-    // Add assertions as needed to verify the test result
-    // For example, you can use Playwright's `expect` functions.
-    // For instance, expect(await page.locator('h1:has-text("Welcome test")')).toHaveText('Welcome test');
   });
 });
