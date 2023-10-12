@@ -18,11 +18,15 @@ export class login {
     this.usernameInput = this.page.locator("#loginusername");
     this.passwordInput = this.page.locator("#loginpassword");
     this.loginButton = this.page.locator('button:has-text("Log in")');
-    this.welcomeLink = this.page.locator('a:has-text("Welcome test")');
   }
 
-  async clickLoginLink() {
+  async loginFunction(username, password) {
     await this.loginLink.click();
+    await this.usernameInput.click();
+    await this.usernameInput.fill(username);
+    await this.usernameInput.press("Tab");
+    await this.passwordInput.fill(password);
+    await this.loginButton.click();
   }
 
   async enterUsername(username: string) {
@@ -37,9 +41,5 @@ export class login {
 
   async clickLoginButton() {
     await this.loginButton.click();
-  }
-
-  async clickWelcomeLink() {
-    await this.welcomeLink.click();
   }
 }

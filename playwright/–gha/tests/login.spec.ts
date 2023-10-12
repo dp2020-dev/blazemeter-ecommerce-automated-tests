@@ -2,7 +2,7 @@ import { test, expect, Page } from "@playwright/test";
 import { login } from "../../pages/login.page";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://www.demoblaze.com");
+  await page.goto("/index.html");
 });
 
 test.describe("Log in tests", () => {
@@ -56,11 +56,14 @@ test.describe("Log in tests", () => {
     const loginPage = new login(page);
     await loginPage.initializeLocators();
 
-    await loginPage.clickLoginLink();
-    await loginPage.enterUsername("test");
-    await loginPage.enterPassword("test");
-    await loginPage.clickLoginButton();
-    await loginPage.clickWelcomeLink();
+    await loginPage.loginFunction("test_Cuser3", "user123");
+    // await loginPage.enterUsername("test_Cuser3");
+    // await loginPage.enterPassword("user123");
+    // await loginPage.clickLoginButton();
+
+    await expect(
+      page.getByRole("link", { name: "Welcome test" })
+    ).toBeVisible();
 
     // Add assertions as needed to verify the test result
     // For example, you can use Playwright's `expect` functions.
