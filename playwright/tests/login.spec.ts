@@ -7,60 +7,41 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("Log in tests", () => {
-  test("Succesful log in", async ({ page }) => {
-    await page.getByRole("link", { name: "Log in" }).click();
-    await page.locator("#loginusername").click();
-    await page.locator("#loginusername").fill("test");
-    await page.locator("#loginusername").press("Tab");
-    await page.locator("#loginpassword").fill("test");
-    await page.getByRole("button", { name: "Log in" }).click();
-
-    await page.getByRole("link", { name: "Welcome test" }).click();
-  });
-
-  test("Successful log in using POM", async ({ page }) => {
+  test("Successful log", async ({ page }) => {
     const loginPage = new login(page);
     await loginPage.initializeLocators();
 
     await loginPage.loginFunction("test", "test");
-    // await loginPage.enterUsername("test_Cuser3");
-    // await loginPage.enterPassword("user123");
-    // await loginPage.clickLoginButton();
 
     await expect(
       page.getByRole("link", { name: "Welcome test" })
     ).toBeVisible();
-
-    // Add assertions as needed to verify the test result
-    // For example, you can use Playwright's `expect` functions.
-    // For instance, expect(await page.locator('h1:has-text("Welcome test")')).toHaveText('Welcome test');
   });
 
-  test("Verify Login Error Message", async ({ page }) => {
-    //this test does not work- does not verify alert message?
+  test("Verify Login error message for incorrect user/password", async ({
+    page,
+  }) => {
     page.on("dialog", async (d) => {
       expect(d.type()).toContain("alert");
-      expect(d.message()).toContain("Loser");
+      expect(d.message()).toContain("User does not exist.");
       await d.accept();
     });
 
-    await page.getByRole("link", { name: "Log in" }).click();
-    await expect(page.locator("#logInModalLabel")).toBeVisible();
-    await page.locator("#loginusername").click();
-    await page.locator("#loginusername").fill("notuser@demo.com");
-    await page.locator("#loginusername").press("Tab");
-    await page.locator("#loginpassword").fill("notPassword");
+    const loginPage = new login(page);
+    await loginPage.initializeLocators();
 
-    const locator = page.locator("#loginpassword");
-    await expect(locator).toHaveValue("notPassword");
+    await loginPage.loginFunction("notuser@demo.com", "notPassword");
 
     const locatorUsername = page.locator("#loginusername");
     await expect(locatorUsername).toHaveValue("notuser@demo.com");
 
+    const locator = page.locator("#loginpassword");
+    await expect(locator).toHaveValue("notPassword");
+
     await page.getByRole("button", { name: "Log in" }).click();
   });
 
-  test("Verify Blank Login Error Message", async ({ page }) => {
+  test("Verify blank Login error message", async ({ page }) => {
     page.on("dialog", async (d) => {
       expect(d.type()).toContain("alert");
       expect(d.message()).toContain("Please fill out Username and Password.");
