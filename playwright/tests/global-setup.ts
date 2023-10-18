@@ -6,9 +6,6 @@ test.describe("Online shopping", () => {
   test("Logged in user adds items to basket", async ({ page }) => {
     //log in
     //add products to basket via catalogue/shop page?
-    await page.waitForSelector("#carouselExampleIndicators", {
-      state: "visible",
-    });
     //navigate to basket -basket oage with methods
     //check no. & value of items
   });

@@ -1,4 +1,5 @@
 import { test, expect, Page } from "@playwright/test";
+const authFile = "playwright/.auth/user.json";
 
 import { login } from "../pages/login.page";
 
@@ -10,12 +11,16 @@ test.describe("Log in tests", () => {
   test("Successful log", async ({ page }) => {
     const loginPage = new login(page);
     await loginPage.initializeLocators();
-
+    
     await loginPage.loginFunction("test", "test");
 
     await expect(
       page.getByRole("link", { name: "Welcome test" })
     ).toBeVisible();
+
+    // End of authentication steps.
+
+    await page.context().storageState({ path: authFile });
   });
 
   test("Verify Login error message for incorrect user/password", async ({
