@@ -11,7 +11,7 @@ test.describe("Log in tests", () => {
   test("Successful log", async ({ page }) => {
     const loginPage = new login(page);
     await loginPage.initializeLocators();
-    
+
     await loginPage.loginFunction("test", "test");
 
     await expect(
@@ -20,7 +20,7 @@ test.describe("Log in tests", () => {
 
     // End of authentication steps.
 
-    await page.context().storageState({ path: authFile });
+    // await page.context().storageState({ path: authFile });
   });
 
   test("Verify Login error message for incorrect user/password", async ({
