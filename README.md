@@ -16,7 +16,6 @@ These tests cover the following categories:
 This repository includes tests written in:
 
 - **Cypress**: Cypress-based test cases.
-- **Playwright (Work in Progress)**: Playwright-based test cases (still under development).
+- **Playwright**: Playwright-based test cases.
 
 If you encounter any issues or have suggestions for improvements, please open an issue or contribute to the repository.
-
