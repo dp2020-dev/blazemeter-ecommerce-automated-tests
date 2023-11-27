@@ -1,7 +1,8 @@
-import { test, expect, Page } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
 });
+
 test.describe("Online shopping", () => {
   test("Logged in user adds items to basket", async ({ page }) => {
     await page.waitForSelector("#carouselExampleIndicators", {
@@ -23,24 +24,6 @@ test.describe("Online shopping", () => {
     await page.getByRole("link", { name: "Add to cart" }).click();
     await page.getByRole("link", { name: "Home (current)" }).click();
 
-    const nextButton = await page.$('button.page-link[value="9"]');
-    if (nextButton) {
-      await nextButton.click();
-    } else {
-      await page.locator("#next2").click();
-    }
-
-    // await page.waitForSelector("#carouselExampleIndicators", {
-    //   state: "visible",
-    // });
-    await page.locator("div:nth-child(11");
-    await page.getByRole("link", { name: "2017 Dell 15.6 Inch" }).click();
-
-    page.once("dialog", (dialog) => {
-      console.log(`Dialog message: ${dialog.message()}`);
-      dialog.dismiss().catch(() => {});
-    });
-    await page.getByRole("link", { name: "Add to cart" }).click();
     await page.getByRole("link", { name: "Cart", exact: true }).click();
 
     await page.getByRole("button", { name: "Place Order" }).click();
@@ -71,4 +54,6 @@ test.describe("Online shopping", () => {
     await page.getByRole("button", { name: "OK" }).click();
     await page.isVisible("text=' Product Store'");
   });
+
+  //TODO close broser post test run
 });
