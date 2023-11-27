@@ -1,10 +1,14 @@
 import { test, expect } from "@playwright/test";
+import { cardPayment } from "../pages/creditCardPayment";
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
 });
 
 test.describe("Online shopping", () => {
   test("Logged in user adds items to basket", async ({ page }) => {
+    const paymentDetails = new cardPayment(page);
+    await paymentDetails.initializeLocators();
+
     await page.waitForSelector("#carouselExampleIndicators", {
       state: "visible",
     });
@@ -29,23 +33,11 @@ test.describe("Online shopping", () => {
     await page.getByRole("button", { name: "Place Order" }).click();
     await page.getByRole("heading", { name: "Place order" });
 
-    await page.locator("#name").fill("Sid Spendalot");
-    await page.locator("#name").press("Tab");
-
-    await page.locator("#country").fill("UK");
-    await page.locator("#country").press("Tab");
-
-    await page.locator("#city").fill("Test Town");
-    await page.locator("#city").press("Tab");
-
-    await page.locator("#card").fill("665544332211");
-    await page.locator("#card").press("Tab");
-
-    await page.locator("#month").fill("June");
-    await page.locator("#month").press("Tab");
-
-    await page.locator("#year").fill("2026");
-    await page.locator("#year").press("Tab");
+    await paymentDetails.enterUsername("Sidney Spendalot");
+    await paymentDetails.enterCountry("UK");
+    await paymentDetails.enterCity("Testville");
+    await paymentDetails.enterCardDetails("112233665544");
+    await paymentDetails.enterMonthAndYear("June", "2023");
 
     await page.getByRole("button", { name: "Purchase" }).click();
     await page
@@ -55,5 +47,5 @@ test.describe("Online shopping", () => {
     await page.isVisible("text=' Product Store'");
   });
 
-  //TODO close broser post test run
+  //TODO close browser post test run
 });
